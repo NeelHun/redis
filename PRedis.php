@@ -36,6 +36,11 @@ class PRedis implements Redis
 
         $this->options = $config['predis_options'];
 
+        if (isset($config['hosts'])) {
+            $this->parameters = $config['hosts'];
+            return;
+        }
+
         $this->parameters = [
             'scheme' => $config['scheme'],
             'host' => $config['host'],
